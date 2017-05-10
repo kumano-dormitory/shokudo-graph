@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'roo-xls'
+gem 'rbplotly'
+gem 'rack'

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
+  </head>
+	<body>
+		<form action='/upload' method='post' enctype='multipart/form-data'>
+      <input type="file" name="excel" size="30">
+      <input type="submit" value="送信">
+		</form>
+    <% unless @plot.nil? %>
+      <%= @plot.to_html %>
+    <% end %>
+	</body>
+</html>
