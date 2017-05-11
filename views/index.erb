@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
-  </head>
-	<body>
-		<form action='/upload' method='post' enctype='multipart/form-data'>
-      <input type="file" name="excel" size="30">
-      <input type="submit" value="送信">
-		</form>
-    <% unless @plot.nil? %>
-      <%= @plot.to_html %>
-    <% end %>
-	</body>
+<head>
+  <title>寮食の原価を表示するやつ</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+</head>
+<body>
+<div class='content'>
+  <div class='row'>
+    <div class='col m12'>
+      <div class="card red lighten-5">
+        <div class="card-content">
+          <div class='row'>
+            <div class="col m12">
+              <form action="/upload" method='POST' enctype='multipart/form-data'>
+                <div class="file-field input-field">
+                  <div class="waves-effect waves-light btn">
+                    <span>ファイルを選択</span>
+                    <input type="file">
+                  </div>
+                  <input type='submit' value='グラフを表示' class='actions waves-effect waves-light btn'>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card blue lighten-5">
+        <div class="card-content">
+          <% unless @plot.nil? %>
+            <%= @plot.to_html %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
