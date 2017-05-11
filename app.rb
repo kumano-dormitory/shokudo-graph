@@ -5,7 +5,7 @@ get '/' do
   erb :index
 end
 
-post '/upload' do
+post '/' do
   tmp_file_path = '/tmp/shokudo.xls'
   File.write(tmp_file_path, params[:excel][:tempfile].read)
 
