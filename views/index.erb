@@ -28,13 +28,13 @@
           </div>
         </div>
       </div>
+      <% unless @plot.nil? %>
       <div class="card blue lighten-5">
         <div class="card-content">
-          <% unless @plot.nil? %>
-            <%= @plot.to_html %>
-          <% end %>
+          <%= @plot.to_html %>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
