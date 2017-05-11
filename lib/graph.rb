@@ -29,7 +29,7 @@ def generate_plot(filepath)
 
 	date_to_row = core_rows_filled.group_by { |row| "#{row[0]}月#{row[1]}日（#{row[2]}）" }
 	Plotly::Plot.new(data: [
-		{ x: date_to_row.keys, y: date_to_row.map { |_, rows| rows.map { |row| row.last }.sum }, name: '原材料費' },
+		{ x: date_to_row.keys, y: date_to_row.map { |_, rows| rows.map { |row| row.last }.sum }, name: '原材料費', mode: :'markers+lines' },
 		{ x: date_to_row.keys, y: date_to_row.map { 420 }, name: '単食券' },
 		{ x: date_to_row.keys, y: date_to_row.map { 390 }, name: '橙食券' }
 	], layout: { height: 600 })
