@@ -14,14 +14,25 @@
       <div class="card red lighten-5">
         <div class="card-content">
           <div class='row'>
-            <div class="col m12">
-              <form action="/" method='POST' enctype='multipart/form-data'>
+            <div class="col m6">
+              <form action="/lunch" method='POST' enctype='multipart/form-data'>
                 <div class="file-field input-field">
                   <div class="waves-effect waves-light btn">
                     <span>ファイルを選択</span>
                     <input type="file" name='excel'>
                   </div>
-                  <input type='submit' value='グラフを表示' class='actions waves-effect waves-light btn'>
+                  <input type='submit' value='昼食のグラフを表示' class='actions waves-effect waves-light btn'>
+                </div>
+              </form>
+            </div>
+            <div class="col m6">
+              <form action="/dinner" method='POST' enctype='multipart/form-data'>
+                <div class="file-field input-field">
+                  <div class="waves-effect waves-light btn">
+                    <span>ファイルを選択</span>
+                    <input type="file" name='excel'>
+                  </div>
+                  <input type='submit' value='夕食のグラフを表示' class='actions waves-effect waves-light btn'>
                 </div>
               </form>
             </div>
@@ -29,12 +40,14 @@
         </div>
       </div>
       <% unless @plot.nil? %>
+
       <div class="card blue lighten-5">
         <div class="card-content">
           <%= @plot.to_html %>
         </div>
       </div>
-      <% end %>
+
+    <% end %>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ module Plotly::Offline::Exportable
   end
 end
 
-def generate_plot(filepath)
+def generate_plot(filepath, unit_price, orange_price)
 	shokudo = Roo::Excel.new(filepath)
 
 	core_rows = []
@@ -30,7 +30,7 @@ def generate_plot(filepath)
 	date_to_row = core_rows_filled.group_by { |row| "#{row[0]}月#{row[1]}日（#{row[2]}）" }
 	Plotly::Plot.new(data: [
 		{ x: date_to_row.keys, y: date_to_row.map { |_, rows| rows.map { |row| row.last }.sum }, type: :bar, name: '原材料費' },
-		{ x: date_to_row.keys, y: date_to_row.map { 420 }, name: '単食券' },
-		{ x: date_to_row.keys, y: date_to_row.map { 390 }, name: '橙食券' }
+    { x: date_to_row.keys, y: date_to_row.map { unit_price }, name: '単食券', mode: :lines },
+    { x: date_to_row.keys, y: date_to_row.map { orange_price }, name: '橙食券', mode: :lines }
 	], layout: { height: 600 })
 end
